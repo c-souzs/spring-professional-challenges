@@ -20,21 +20,16 @@ public class ComponentsAndDependencyInjectionApplication implements CommandLineR
 
 	@Override
 	public void run(String... args) throws Exception {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("---- ENTRADA ----");
-		System.out.print("Código do pedido: ");
-		int code = sc.nextInt();
-		System.out.print("Valor básico: ");
-		double basic = sc.nextDouble();
-		System.out.print("Porcentagem de desconto: ");
-		double discount = sc.nextDouble();
+		Order order1 = new Order(1034, 150.0, 20.0);
+		System.out.println("Pedido código " + order1.getCode());
+		System.out.println("Valor total: R$ " + orderService.total(order1));
 
-		Order order = new Order(code, basic, discount);
+		Order order2 = new Order(2282, 800.0, 10.0);
+		System.out.println("Pedido código " + order2.getCode());
+		System.out.println("Valor total: R$ " + orderService.total(order2));
 
-		System.out.println("---- SAIDA ----");
-		System.out.println("Pedido do código: " + order.getCode());
-		System.out.println("Valor total: " + orderService.total(order));
-
-		sc.close();
+		Order order3 = new Order(1309, 95.90, 0.0);
+		System.out.println("Pedido código " + order3.getCode());
+		System.out.println("Valor total: R$ " + orderService.total(order3));
 	}
 }
